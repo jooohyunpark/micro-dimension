@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Generic</title>
+    <style>
+        body {
+            overflow: hidden;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+
+        let canvas = document.querySelector("#canvas");
+        let context = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let animate_sec = 16;
+        let pause_sec = 4;
+        let count = 200;
+        let seed_color;
+        const color_num = 5;
+
+        var goal,
+            _loop,
+            followers = [];
+
+        function Goal() {
+            this.x = canvas.width * Math.random();
+            this.y = canvas.height * Math.random();
+            this.ax = 0;
+            this.ay = 0;
+            this.vx = 0;
+            this.vy = 0;
+            this.r = 0.2;
+        }
+
+        Goal.prototype.step = function () {
+            this.ax += 0.2 - Math.random() * 0.4;
+            this.ay += 0.2 - Math.random() * 0.4;
+            this.vx += this.ax;
+            this.vy += this.ay;
+            this.vx *= Math.abs(this.vx) > 5 ? 0.75 : 1;
+            this.vy *= Math.abs(this.vy) > 5 ? 0.75 : 1;
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x + this.r >= canvas.width || this.x <= this.r) {
+                this.vx = 0;
+                this.ax = 0;
+            }
+            if (this.y + this.r >= canvas.height || this.y <= this.r) {
+                this.vy = 0;
+                this.ay = 0;
+            }
+            if (this.x + this.r >= canvas.width) {
+                this.x = canvas.width - this.r;
+            }
+            if (this.x <= this.r) {
+                this.x = this.r;
+            }
+            if (this.y + this.r >= canvas.height) {
+                this.y = canvas.height - this.r;
+            }
+            if (this.y <= this.r) {
+                this.y = this.r;
+            }
+        };
+
+        function Follower(leader, r, d) {
+            this.x = canvas.width / 2;
+            this.y = canvas.height / 2;
+            this.vx = 0;
+            this.vy = 0;
+            this.r = r;
+            this.leader = leader;
+            this.damp = d;
+        }
+
+        Follower.prototype.step = function () {
+            this.vx = (this.leader.x - this.x) * this.damp;
+            this.vy = (this.leader.y - this.y) * this.damp;
+            this.x += this.vx;
+            this.y += this.vy;
+        };
+
+        const loop = () => {
+            _loop = requestAnimationFrame(loop);
+
+            goal.step();
+            goal.step();
+            goal.step();
+
+            // context.globalCompositeOperation = "lighter";
+            context.beginPath();
+            context.moveTo(followers[0].x, followers[0].y);
+            followers.forEach(function (follower, i) {
+                follower.step();
+                if (i > 0) {
+                    context.lineTo(follower.x, follower.y);
+                }
+            });
+            context.lineWidth = 1.2;
+
+            let index = randomVal(0, color_num - 1);
+
+            context.strokeStyle =
+                `hsla(${seed_color[index][0]}, ${seed_color[index][1]}%, ${seed_color[index][2]}%, ${Math.random() * 0.16})`;
+
+            context.stroke();
+        };
+
+        const reset = () => {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            let _x = canvas.width * Math.random();
+            let _y = canvas.height * Math.random();
+            goal.x = _x;
+            goal.y = _y;
+            followers.forEach(function (follower, i) {
+                follower.x = _x;
+                follower.y = _y;
+            });
+        };
+
+        goal = new Goal();
+        seed_color = generate(color_num);
+
+        for (var i = 0; i < count; i++) {
+            var leader = i == 0 ? goal : followers[i - 1],
+                r = 1 + ((count - i) / count) * 10,
+                d = i == 0 ? 0.05 : 0.4;
+            followers.push(new Follower(leader, r, d));
+        }
+
+        loop();
+        reset();
+
+
+
+        setInterval(() => {
+            refresh();
+        }, 1000 * (animate_sec + pause_sec));
+
+        const refresh = () => {
+            cancelAnimationFrame(_loop);
+            setTimeout(() => {
+                seed_color = generate(color_num);
+                reset();
+                loop();
+            }, 1000 * pause_sec);
+        };
+
+
+        function generate(num) {
+            let array = [];
+            for (var i = 0; i < num; i++) {
+                array.push([randomVal(0, 360), randomVal(30, 95), randomVal(30, 80)])
+            }
+            return array
+        }
+
+        function randomVal(min, max) {
+            return Math.floor(Math.random() * (max - min) + 1) + min;
+        }
+
+    </script>
+
+</body>
+
+</html>
