@@ -7,7 +7,9 @@ const settings = {
 };
 
 const sketch = () => {
-    let count = 1200;
+    let count = 2000;
+    let thickness = 2;
+    let alpha = 0.12;
     let seedCount = [random.rangeFloor(1, 4), random.rangeFloor(1, 4)];
     let controlCount = random.rangeFloor(2, 5);
     let points = [];
@@ -15,7 +17,7 @@ const sketch = () => {
     let seeds_x = [];
     let seeds_y = [];
     let thresold = 1 / 20;
-    let colors = random.pick(['#00ffff', '#ff00ff', '#ffff00', '#ff0000', '#00ff00', '#0000ff']);
+    let color = random.pick(['#00ffff', '#ff00ff', '#ffff00', '#ff0000', '#00ff00', '#0000ff']);
 
     // set seed coordinates
     for (let h = 0; h < seedCount[0]; h++) {
@@ -36,7 +38,7 @@ const sketch = () => {
     }
 
     return ({ context, width, height }) => {
-        context.fillStyle = '#fff';
+        context.fillStyle = '#000';
         context.fillRect(0, 0, width, height);
 
         points.forEach(point => {
@@ -59,9 +61,9 @@ const sketch = () => {
             context.moveTo(0, y0);
             context.bezierCurveTo(xControl0, yControl0, xControl1, yControl1, width, y1)
 
-            context.lineWidth = 2;
-            context.strokeStyle = random.chance(0.08) ? colors : '#000';
-            context.globalAlpha = 0.18;
+            context.lineWidth = thickness;
+            context.strokeStyle = random.chance(0.08) ? color : '#fff';
+            context.globalAlpha = alpha;
             context.stroke();
         })
     };

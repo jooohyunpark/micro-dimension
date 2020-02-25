@@ -4,7 +4,9 @@
   "description": "",
   "author": "joohyun park",
   "scripts": {
-    "dev": "d"
+    "hair": "canvas-sketch src/hair.js --open",
+    "wave": "canvas-sketch src/wave.js --open",
+    "texture": "canvas-sketch src/texture.js --open"
   },
   "dependencies": {
     "canvas-sketch-cli": "^1.11.7",
