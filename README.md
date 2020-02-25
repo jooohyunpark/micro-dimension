@@ -1,3 +1,3 @@
-hair 
-wave
-texture
+hair <br/>
+wave <br/>
+texture 
