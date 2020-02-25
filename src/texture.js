@@ -11,8 +11,8 @@ const settings = {
 };
 
 const sketch = ({ width, height }) => {
-  const lineCount = 300;
-  const lineSegments = 500;
+  const lineCount = 800;
+  const lineSegments = 300;
 
   let lines = [];
   const margin = width * 0.1;
@@ -48,7 +48,6 @@ const sketch = ({ width, height }) => {
 
   return ({ context, width, height }) => {
     context.fillStyle = '#000';
-    context.globalAlpha = 1;
     context.globalCompositeOperation = 'source-over';
     context.fillRect(0, 0, width, height);
     context.lineWidth = 1;
@@ -68,7 +67,7 @@ const sketch = ({ width, height }) => {
       });
 
       context.globalCompositeOperation = 'lighter';
-      context.globalAlpha = 0.9;
+      context.globalAlpha = 0.7;
       context.stroke();
     });
 
