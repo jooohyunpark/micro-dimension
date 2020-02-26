@@ -48,8 +48,8 @@ const sketch = () => {
             const y0 = lerp(0, height, point[0]);
             const y1 = lerp(0, height, point[1]);
 
-            const m = width / 8;
-            const n = height / 8;
+            const m = width / 10;
+            const n = height / 10;
 
             let control0 = random.pick(controls)
             let control1 = random.pick(controls)
