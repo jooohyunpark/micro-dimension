@@ -3,13 +3,16 @@ const { lerp } = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
 
 const settings = {
-    // exportPixelRatio: 2,
-    dimensions: [2048, 2048]
+    // exportPixelRatio: 3,
+    // dimensions: [2000, 2000],
+    pixelsPerInch: 300,
+    units: 'in',
+    dimensions: [16, 16]
 };
 
 const sketch = () => {
     let count = 2000;
-    let thickness = 2;
+    let thickness = 1 * 0.01;
     let alpha = 0.12;
     let seedCount = [random.rangeFloor(1, 4), random.rangeFloor(1, 4)];
     let controlCount = random.rangeFloor(2, 5);
