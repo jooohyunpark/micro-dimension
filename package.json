@@ -4,6 +4,7 @@
   "description": "",
   "author": "joohyun park",
   "scripts": {
+    "ameba": "canvas-sketch src/ameba.js --open",
     "hair": "canvas-sketch src/hair.js --open",
     "wave": "canvas-sketch src/wave.js --open",
     "texture": "canvas-sketch src/texture.js --open"
