@@ -14,6 +14,9 @@ const sketch = () => {
     let count = 2000;
     let thickness = 1 * 0.01;
     let alpha = 0.12;
+    // let thickness = 1;
+    // let alpha = 0.1;
+
     let seedCount = [random.rangeFloor(1, 4), random.rangeFloor(1, 4)];
     let controlCount = random.rangeFloor(2, 5);
     let points = [];
