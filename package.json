@@ -4,10 +4,8 @@
   "description": "",
   "author": "joohyun park",
   "scripts": {
-    "hair": "canvas-sketch src/hair.js --open",
-    "wave": "canvas-sketch src/wave.js --open",
-    "texture": "canvas-sketch src/texture.js --open",
-    "build": "canvas-sketch src/hair.js --build --inline --source-map=false"
+    "dev": "canvas-sketch src/index.js --open",
+    "build": "canvas-sketch src/index.js --build --inline --source-map=false"
   },
   "dependencies": {
     "bezier-easing": "^2.1.0",
