@@ -4,8 +4,10 @@
   "description": "",
   "author": "joohyun park",
   "scripts": {
-    "dev": "canvas-sketch src/index.js --open",
-    "build": "canvas-sketch src/index.js --build --inline --source-map=false"
+    "dev:micro": "canvas-sketch src/micro.js --open",
+    "dev:macro": "canvas-sketch src/macro.js --open",
+    "build:micro": "canvas-sketch src/micro.js --build --inline --source-map=false",
+    "build:macro": "canvas-sketch src/macro.js --build --inline --source-map=false"
   },
   "dependencies": {
     "bezier-easing": "^2.1.0",
@@ -22,6 +24,5 @@
     "nice-color-palettes": "^2.0.0",
     "regl": "^1.3.7",
     "three": "^0.97.0"
-  },
-  "devDependencies": {}
+  }
 }
