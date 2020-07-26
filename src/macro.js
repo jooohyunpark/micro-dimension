@@ -5,9 +5,8 @@ const { lerp } = require('canvas-sketch-util/math');
 random.setSeed(random.getRandomSeed());
 
 const settings = {
-    seed: random.getSeed(),
-    // exportPixelRatio: 3,
-    dimensions: [1000, 1000]
+    dimensions: [1000, 1000],
+    // exportPixelRatio: 3
 };
 
 const sketch = ({ width, height }) => {
@@ -52,7 +51,7 @@ const sketch = ({ width, height }) => {
         context.fillRect(0, 0, width, height);
         context.lineWidth = 0.8;
 
-        let seed_color = random.rangeFloor(0, 360);
+        const seed_color = random.rangeFloor(0, 360);
 
         lines.forEach(line => {
             context.beginPath();
@@ -67,7 +66,7 @@ const sketch = ({ width, height }) => {
             });
 
             context.globalCompositeOperation = 'lighter';
-            context.globalAlpha = 0.7;
+            context.globalAlpha = 0.8;
             context.stroke();
         });
 

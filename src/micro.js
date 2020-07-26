@@ -3,11 +3,11 @@ const { lerp } = require('canvas-sketch-util/math');
 const random = require('canvas-sketch-util/random');
 
 const settings = {
-    // exportPixelRatio: 1,
-    // dimensions: [2000, 2000],
     pixelsPerInch: 300,
     units: 'in',
-    dimensions: [32, 32]
+    dimensions: [32, 32],
+    // exportPixelRatio: 1,åå
+    // dimensions: [2000, 2000]
 };
 
 const sketch = () => {
