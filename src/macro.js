@@ -7,7 +7,11 @@ const settings = {
     exportPixelRatio: 3
 };
 
-const colors = { blue: [220, 185, 165], cyan: [145, 120, 100], green: [70, 45, 20] }
+const colors = {
+    blue: [220, 185, 165],
+    cyan: [145, 120, 100],
+    green: [70, 45, 20]
+}
 
 const seed_color = random.rangeFloor(0, 360);
 
