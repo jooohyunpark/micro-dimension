@@ -4,8 +4,12 @@ const { lerp } = require('canvas-sketch-util/math');
 
 const settings = {
     dimensions: [1000, 1000],
-    // exportPixelRatio: 3
+    exportPixelRatio: 3
 };
+
+const colors = { blue: [220, 185, 165], cyan: [145, 120, 100], green: [70, 45, 20] }
+
+const seed_color = random.rangeFloor(0, 360);
 
 const sketch = ({ width, height }) => {
     const lineCount = 800;
@@ -47,9 +51,7 @@ const sketch = ({ width, height }) => {
         context.fillStyle = '#000';
         context.globalCompositeOperation = 'source-over';
         context.fillRect(0, 0, width, height);
-        context.lineWidth = 0.7;
-
-        const seed_color = random.rangeFloor(0, 360);
+        context.lineWidth = 1;
 
         lines.forEach(line => {
             context.beginPath();
