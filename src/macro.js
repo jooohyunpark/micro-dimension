@@ -2,8 +2,6 @@ const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const { lerp } = require('canvas-sketch-util/math');
 
-random.setSeed(random.getRandomSeed());
-
 const settings = {
     dimensions: [1000, 1000],
     // exportPixelRatio: 3
@@ -49,7 +47,7 @@ const sketch = ({ width, height }) => {
         context.fillStyle = '#000';
         context.globalCompositeOperation = 'source-over';
         context.fillRect(0, 0, width, height);
-        context.lineWidth = 0.8;
+        context.lineWidth = 0.7;
 
         const seed_color = random.rangeFloor(0, 360);
 
@@ -66,7 +64,7 @@ const sketch = ({ width, height }) => {
             });
 
             context.globalCompositeOperation = 'lighter';
-            context.globalAlpha = 0.8;
+            context.globalAlpha = 0.7;
             context.stroke();
         });
 
