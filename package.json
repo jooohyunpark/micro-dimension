@@ -1,13 +1,11 @@
 {
-  "name": "dimension",
+  "name": "micro-dimension",
   "version": "1.0.0",
   "description": "",
   "author": "joohyun park",
   "scripts": {
-    "dev:micro": "canvas-sketch src/micro.js --open",
-    "dev:macro": "canvas-sketch src/macro.js --open",
-    "build:micro": "canvas-sketch src/micro.js --build --inline --source-map=false",
-    "build:macro": "canvas-sketch src/macro.js --build --inline --source-map=false"
+    "dev": "canvas-sketch src/index.js --open",
+    "build": "canvas-sketch src/index.js --build --inline --source-map=false"
   },
   "dependencies": {
     "canvas-sketch": "0.0.27",

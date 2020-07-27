@@ -6,7 +6,7 @@ const settings = {
     pixelsPerInch: 300,
     units: 'in',
     dimensions: [32, 32],
-    // exportPixelRatio: 1,åå
+    // exportPixelRatio: 1,
     // dimensions: [2000, 2000]
 };
 
