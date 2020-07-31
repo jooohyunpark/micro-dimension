@@ -6,14 +6,14 @@ const settings = {
     pixelsPerInch: 300,
     units: 'in',
     dimensions: [32, 32],
-    // exportPixelRatio: 1,
-    // dimensions: [2000, 2000]
+    // exportPixelRatio: 2,
+    // dimensions: [2400, 2400]
 };
 
 const sketch = () => {
     let count = 2000;
-    let thickness = 1 * 0.01;
-    let alpha = 0.12;
+    let thickness = 1 * 0.03;
+    let alpha = 0.1;
 
     let seedCount = [random.rangeFloor(1, 4), random.rangeFloor(1, 4)];
     let controlCount = random.rangeFloor(2, 5);
