@@ -11,18 +11,19 @@ const settings = {
 };
 
 const sketch = () => {
-    let count = 2000;
-    let thickness = 1 * 0.03;
-    let alpha = 0.1;
+    const count = 2000;
+    const thickness = 1 * 0.03;
+    const alpha = 0.1;
 
-    let seedCount = [random.rangeFloor(1, 4), random.rangeFloor(1, 4)];
-    let controlCount = random.rangeFloor(2, 5);
-    let points = [];
-    let controls = [];
-    let seeds_x = [];
-    let seeds_y = [];
-    let thresold = 1 / 20;
-    let color = random.pick(['#00ffff', '#ff00ff', '#ffff00', '#ff0000', '#00ff00', '#0000ff']);
+    const seedCount = [random.rangeFloor(1, 4), random.rangeFloor(1, 4)];
+    const controlCount = random.rangeFloor(2, 5);
+    const points = [];
+    const controls = [];
+    const seeds_x = [];
+    const seeds_y = [];
+    const thresold = 1 / 20;
+    // let color = random.pick(['#00ffff', '#ff00ff', '#ffff00', '#ff0000', '#00ff00', '#0000ff']);
+    const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
 
     // set seed coordinates
     for (let h = 0; h < seedCount[0]; h++) {
@@ -31,12 +32,14 @@ const sketch = () => {
     for (let h = 0; h < seedCount[1]; h++) {
         seeds_y.push(random.range(thresold, 1 - thresold))
     }
+
     // iterate points
     for (let i = 0; i < count; i++) {
         let x = random.pick(seeds_x) + random.gaussian() * 0.03
         let y = random.pick(seeds_y) + random.gaussian() * 0.03
         points.push([x, y]);
     }
+
     // set control points
     for (let j = 0; j < controlCount; j++) {
         controls.push([random.range(0, 1), random.range(0, 1)])
@@ -67,7 +70,7 @@ const sketch = () => {
             context.bezierCurveTo(xControl0, yControl0, xControl1, yControl1, width, y1)
 
             context.lineWidth = thickness;
-            context.strokeStyle = random.chance(0.08) ? color : '#fff';
+            context.strokeStyle = random.chance(0.08) ? color : '#ffffff';
             context.globalAlpha = alpha;
             context.stroke();
         })
