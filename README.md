@@ -1,2 +1,3 @@
-### Micro Dimension 
-Generative texture of the microscopic space lying behind our perception. As a potentially unlimited series, each composition is algorithmically determined and totally unique.
+# Micro Dimension
+
+A generative texture of the microscopic space beyond our perception. Each composition is algorithmically created and completely unique.
